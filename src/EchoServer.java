@@ -1,5 +1,3 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -30,7 +28,7 @@ public class EchoServer {
                 while (true) {
                     String msg = consoleInput.nextLine();
                     System.out.println("Message from Console: " + msg);
-                    notify_all(msg);
+                    notifyAll(msg);
                 }
             }).start();
 
@@ -53,7 +51,7 @@ public class EchoServer {
         }
     }
 
-    public static void notify_all(String str) {
+    public static void notifyAll(String str) {
         for (ClientCtx client: clients){
             try {
                 client.getOut().writeUTF(str);
